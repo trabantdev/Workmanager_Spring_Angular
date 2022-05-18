@@ -1,8 +1,10 @@
 package com.tobiastrabant.workmanager.entities;
 
+import javax.persistence.*;
 import java.util.Date;
 
-public class Entry {
+@MappedSuperclass
+public abstract class Entry {
 
     public enum EntryPriority
     {
@@ -11,13 +13,16 @@ public class Entry {
         HIGH
     }
 
+    @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
+    private Integer id;
     private String entryName;
     private String description;
     private EntryPriority priority;
-    private User creator;
+    //private User creator;
     private Date creationTime;
     private Date lastUpdated;
-    private User[] assignedEmployees;
+    //private User[] assignedEmployees;
 
     public String getEntryName() {
         return entryName;
@@ -43,13 +48,13 @@ public class Entry {
         this.priority = priority;
     }
 
-    public User getCreator() {
+/*    public User getCreator() {
         return creator;
     }
 
     public void setCreator(User creator) {
         this.creator = creator;
-    }
+    }*/
 
     public Date getCreationTime() {
         return creationTime;
@@ -67,11 +72,11 @@ public class Entry {
         this.lastUpdated = lastUpdated;
     }
 
-    public User[] getAssignedEmployees() {
+/*    public User[] getAssignedEmployees() {
         return assignedEmployees;
     }
 
     public void setAssignedEmployees(User[] assignedEmployees) {
         this.assignedEmployees = assignedEmployees;
-    }
+    }*/
 }
