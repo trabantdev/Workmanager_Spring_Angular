@@ -5,7 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Controller
 public class ProjectController {
@@ -21,7 +21,7 @@ public class ProjectController {
     }
 
     @RequestMapping("/project-confirmation")
-    public String processProjectForm(@RequestParam(name="deadline") Date deadline,
+    public String processProjectForm(@RequestParam(name="deadline") LocalDateTime deadline,
                                      @RequestParam(name="name") String name,
                                      @RequestParam(name="description") String description,
                                      @RequestParam(name="priority") String priority,

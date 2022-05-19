@@ -6,5 +6,22 @@
 </head>
 <body>
     <h2>Project Form</h2>
+    <form action="/process-project-form" method="GET">
+        <input type="text" name="name" placeholder="Project Name" />
+        <p><label for="description">Project Description:</label></p>
+        <textarea id="description" name="description" rows="4" cols="50">Enter Project Description Here...</textarea>
+        <br>
+        <label for="deadline">Project Deadline:</label>
+        <input type="datetime-local" id="deadline" name="deadline">
+        <p>Please select the projects priority:</p>
+        <input type="radio" id="low" name="priority" value="Low">
+        <label for="low">Low</label><br>
+        <input type="radio" id="medium" name="priority" value="Medium">
+        <label for="medium">Medium</label><br>
+        <input type="radio" id="high" name="priority" value="High">
+        <label for="high">High</label><br>
+        <br>
+        <input type="submit" />
+    </form>
 </body>
 </html>

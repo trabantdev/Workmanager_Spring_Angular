@@ -5,6 +5,21 @@
     <title>Ticket Form</title>
 </head>
 <body>
-    <h2>Ticket Form</h2>
+<h2>Ticket Form</h2>
+<form action="/process-ticket-form" method="GET">
+    <input type="text" name="name" placeholder="Ticket Name" />
+    <p><label for="description">Ticket Description:</label></p>
+    <textarea id="description" name="description" rows="4" cols="50">Enter Ticket Description Here...</textarea>
+    <br>
+    <p>Please select the Tickets priority:</p>
+    <input type="radio" id="low" name="priority" value="Low">
+    <label for="low">Low</label><br>
+    <input type="radio" id="medium" name="priority" value="Medium">
+    <label for="medium">Medium</label><br>
+    <input type="radio" id="high" name="priority" value="High">
+    <label for="high">High</label><br>
+    <br>
+    <input type="submit" />
+</form>
 </body>
 </html>

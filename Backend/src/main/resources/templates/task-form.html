@@ -5,6 +5,23 @@
     <title>Task Form</title>
 </head>
 <body>
-    <h2>Task Form</h2>
+<h2>Task Form</h2>
+<form action="/process-task-form" method="GET">
+    <input type="text" name="name" placeholder="Task Name" />
+    <p><label for="description">Task Description:</label></p>
+    <textarea id="description" name="description" rows="4" cols="50">Enter Task Description Here...</textarea>
+    <br>
+    <label for="deadline">Task Deadline:</label>
+    <input type="datetime-local" id="deadline" name="deadline">
+    <p>Please select the tasks priority:</p>
+    <input type="radio" id="low" name="priority" value="Low">
+    <label for="low">Low</label><br>
+    <input type="radio" id="medium" name="priority" value="Medium">
+    <label for="medium">Medium</label><br>
+    <input type="radio" id="high" name="priority" value="High">
+    <label for="high">High</label><br>
+    <br>
+    <input type="submit" />
+</form>
 </body>
 </html>
