@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee Form</title>
+</head>
+<body>
+    <h2>Employee Form</h2>
+    <form action="/process-employee-form" method="GET">
+        <input type="text" name="firstName" placeholder="First Name" />
+        <input type="text" name="lastName" placeholder="Last Name" />
+        <p>Please select the employees role:</p>
+        <input type="radio" id="admin" name="role" value="Admin">
+        <label for="admin">Admin</label><br>
+        <input type="radio" id="manager" name="role" value="Manager">
+        <label for="manager">Manager</label><br>
+        <input type="radio" id="engineer" name="role" value="Engineer">
+        <label for="engineer">Engineer</label><br>
+        <input type="radio" id="uiux" name="role" value="UIUX">
+        <label for="uiux">UIUX</label><br>
+        <input type="radio" id="qa" name="role" value="QA">
+        <label for="qa">QA</label><br>
+        <br>
+        <input type="submit" />
+    </form>
+</body>
+</html>
