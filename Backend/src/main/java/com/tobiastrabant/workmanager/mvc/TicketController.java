@@ -1,28 +1,29 @@
 package com.tobiastrabant.workmanager.mvc;
 
+import com.tobiastrabant.workmanager.entities.Ticket;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
+@RequestMapping("/tickets")
 public class TicketController {
 
-    @RequestMapping("/tickets")
+    @GetMapping("/list")
     public String showTicketsList() {
         return "tickets-list";
     }
 
-    @RequestMapping("/ticket-form")
-    public String showTicketForm() {
+    @GetMapping("/form")
+    public String showTicketForm(Model model) {
+        model.addAttribute("ticket", new Ticket());
         return "ticket-form";
     }
 
-    @RequestMapping("/process-ticket-form")
-    public String processTicketForm(@RequestParam(name="name") String name,
-                                    @RequestParam(name="description") String description,
-                                    @RequestParam(name="priority") String priority,
+    @PostMapping("/form")
+    public String processTicketForm(@ModelAttribute Ticket ticket,
                                     Model model) {
+        model.addAttribute("ticket", ticket);
         return "ticket-confirmation";
     }
 }

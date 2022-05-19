@@ -10,9 +10,9 @@ import java.util.Date;
 
 @Component
 @Entity
-public class User {
+public class Employee {
 
-    public enum UserRole
+    public enum EmployeeRole
     {
         ADMIN,
         MANAGER,
@@ -27,7 +27,7 @@ public class User {
     private String firstName;
     private String lastName;
     private Date creationTime;
-    private UserRole role;
+    private EmployeeRole role;
 
     public void Test()
     {

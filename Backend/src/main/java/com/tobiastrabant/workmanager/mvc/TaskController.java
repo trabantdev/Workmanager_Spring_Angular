@@ -1,31 +1,32 @@
 package com.tobiastrabant.workmanager.mvc;
 
+import com.tobiastrabant.workmanager.entities.Task;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
-import java.time.LocalDateTime;
 
 @Controller
+@RequestMapping("/tasks")
 public class TaskController {
 
-    @RequestMapping("/tasks")
+    @GetMapping("/list")
     public String showTasksList() {
         return "tasks-list";
     }
 
-    @RequestMapping("/task-form")
-    public String showTaskForm() {
+    @GetMapping("/form")
+    public String showTaskForm(Model model) {
+        model.addAttribute("task", new Task());
         return "task-form";
     }
 
-    @RequestMapping("/process-task-form")
-    public String processTaskForm(@RequestParam(name="deadline") LocalDateTime deadline,
-                                  @RequestParam(name="name") String name,
-                                  @RequestParam(name="description") String description,
-                                  @RequestParam(name="priority") String priority,
+    @PostMapping("/form")
+    public String processTaskForm(@ModelAttribute Task task,
                                   Model model) {
+        model.addAttribute("task", task);
         return "task-confirmation";
     }
 }

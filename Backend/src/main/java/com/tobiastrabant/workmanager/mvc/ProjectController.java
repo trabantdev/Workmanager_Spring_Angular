@@ -1,31 +1,32 @@
 package com.tobiastrabant.workmanager.mvc;
 
+import com.tobiastrabant.workmanager.entities.Project;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
-import java.time.LocalDateTime;
 
 @Controller
+@RequestMapping("/projects")
 public class ProjectController {
 
-    @RequestMapping("/projects")
+    @GetMapping("/list")
     public String showProjectsList() {
         return "projects-list";
     }
 
-    @RequestMapping("/project-form")
-    public String showProjectForm() {
+    @GetMapping("/form")
+    public String showProjectForm(Model model) {
+        model.addAttribute("project", new Project());
         return "project-form";
     }
 
-    @RequestMapping("/project-confirmation")
-    public String processProjectForm(@RequestParam(name="deadline") LocalDateTime deadline,
-                                     @RequestParam(name="name") String name,
-                                     @RequestParam(name="description") String description,
-                                     @RequestParam(name="priority") String priority,
+    @PostMapping("/form")
+    public String processProjectForm(@ModelAttribute Project project,
                                      Model model) {
+        model.addAttribute("project", project);
         return "project-confirmation";
     }
 }

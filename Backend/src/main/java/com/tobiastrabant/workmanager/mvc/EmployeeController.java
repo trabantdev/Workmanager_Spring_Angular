@@ -1,29 +1,29 @@
 package com.tobiastrabant.workmanager.mvc;
 
+import com.tobiastrabant.workmanager.entities.Employee;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
+@RequestMapping("/employees")
 public class EmployeeController {
 
-    @RequestMapping("/employees")
+    @GetMapping("/list")
     public String showEmployeesList(){
         return "employees-list";
     }
 
-    @RequestMapping("/employee-form")
-    public String showEmployeeForm(){
+    @GetMapping("/form")
+    public String showEmployeeForm(Model model){
+        model.addAttribute("employee", new Employee());
         return "employee-form";
     }
 
-    @RequestMapping("/process-employee-form")
-    public String processEmployeeForm(@RequestParam(name="firstName") String firstName,
-                                      @RequestParam(name="role") String role,
+    @PostMapping("/form")
+    public String processEmployeeForm(@ModelAttribute Employee employee,
                                       Model model) {
-        model.addAttribute("firstName", firstName);
-        model.addAttribute("role", role);
+        model.addAttribute("employee", employee);
         return "employee-confirmation";
     }
 }
