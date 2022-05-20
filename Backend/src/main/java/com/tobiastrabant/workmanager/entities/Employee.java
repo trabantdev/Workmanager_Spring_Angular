@@ -6,7 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Component
 @Entity
@@ -36,7 +36,7 @@ public class Employee {
     private Integer id;
     private String firstName;
     private String lastName;
-    private Date creationTime;
+    private LocalDateTime creationTime;
     private EmployeeRole role;
 
     public void Test()
@@ -60,11 +60,11 @@ public class Employee {
         this.lastName = lastName;
     }
 
-    public Date getCreationTime() {
+    public LocalDateTime getCreationTime() {
         return creationTime;
     }
 
-    public void setCreationTime(Date creationTime) {
+    public void setCreationTime(LocalDateTime creationTime) {
         this.creationTime = creationTime;
     }
 

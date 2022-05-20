@@ -1,20 +1,20 @@
 package com.tobiastrabant.workmanager.entities;
 
 import javax.persistence.MappedSuperclass;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @MappedSuperclass
 public class TimedEntry extends Entry{
 
     // A TimedEntry is an Entry with an associated deadline
 
-    private Date deadline;
+    private LocalDateTime deadline;
 
-    public Date getDeadline() {
+    public LocalDateTime getDeadline() {
         return deadline;
     }
 
-    public void setDeadline(Date deadline) {
+    public void setDeadline(LocalDateTime deadline) {
         this.deadline = deadline;
     }
 }

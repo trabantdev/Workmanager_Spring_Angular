@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Project Form</title>
 </head>
 <body>
     <h2>Project Form</h2>
-    <form action="/process-project-form" method="GET">
+    <form th:action="@{/form}" method="post" th:object="${project}">
         <input type="text" name="name" placeholder="Project Name" />
         <p><label for="description">Project Description:</label></p>
         <textarea id="description" name="description" rows="4" cols="50">Enter Project Description Here...</textarea>
         <br>
         <label for="deadline">Project Deadline:</label>
-        <input type="datetime-local" id="deadline" name="deadline">
+        <input type="datetime-local" id="deadline" th:field="${project.deadline}">
         <p>Please select the projects priority:</p>
         <select name="priority">
             <option th:each="priority : ${T(com.tobiastrabant.workmanager.entities.Entry.EntryPriority).values()}"
