@@ -1,6 +1,8 @@
 package com.tobiastrabant.workmanager.mvc;
 
 import com.tobiastrabant.workmanager.entities.Employee;
+import com.tobiastrabant.workmanager.service.EmployeeService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -10,22 +12,27 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
 @RequestMapping("/employees")
 public class EmployeeController {
 
+    private EmployeeService employeeService;
+
+    @Autowired
+    public EmployeeController(EmployeeService employeeService){
+        this.employeeService = employeeService;
+    }
     @GetMapping("/list")
     public String showEmployeesList(Model model){
         //TODO add employees from database to the model with identifier "employees"
-        List<Employee> employees = new ArrayList<>();
-        Employee tobias = new Employee();
+        List<Employee> employees = employeeService.findAll();
+/*        Employee tobias = new Employee();
         tobias.setFirstName("Tobias");
         tobias.setLastName("Trabant");
         tobias.setEmail("trabant@web.de");
-        employees.add(tobias);
+        employees.add(tobias);*/
         model.addAttribute("employees",employees);
         return "employees-list";
     }
