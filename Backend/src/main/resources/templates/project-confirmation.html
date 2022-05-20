@@ -1,10 +1,15 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Project Confirmation</title>
+    <title>Handling Form Submission</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-<p th:text="'Project, ' + ${name} + ${description} + '!'" />
+<h1>Result</h1>
+<p th:text="'name: ' + ${project.name}" />
+<p th:text="'description: ' + ${project.description}" />
+<p th:text="'priority: ' + ${project.priority}" />
+<p th:text="'deadline: ' + ${project.deadline}" />
+<a href="/employees/form">add another project</a>
 </body>
 </html>

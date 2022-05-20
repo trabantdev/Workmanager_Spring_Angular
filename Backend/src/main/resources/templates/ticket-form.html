@@ -12,13 +12,11 @@
     <textarea id="description" name="description" rows="4" cols="50">Enter Ticket Description Here...</textarea>
     <br>
     <p>Please select the Tickets priority:</p>
-    <input type="radio" id="low" name="priority" value="Low">
-    <label for="low">Low</label><br>
-    <input type="radio" id="medium" name="priority" value="Medium">
-    <label for="medium">Medium</label><br>
-    <input type="radio" id="high" name="priority" value="High">
-    <label for="high">High</label><br>
-    <br>
+    <select name="priority">
+        <option th:each="priority : ${T(com.tobiastrabant.workmanager.entities.Entry.EntryPriority).values()}"
+                th:value="${priority}" th:text="${priority.displayValue}"></option>
+    </select>
+    <br><br>
     <input type="submit" />
 </form>
 </body>

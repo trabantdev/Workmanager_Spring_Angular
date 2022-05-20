@@ -14,11 +14,21 @@ public class Employee {
 
     public enum EmployeeRole
     {
-        ADMIN,
-        MANAGER,
-        ENGINEER,
-        UIUX,
-        QA
+        ADMIN("Admin"),
+        MANAGER("Manager"),
+        ENGINEER("Engineer"),
+        UIUX("UI/UX"),
+        QA("QA");
+
+        private final String displayValue;
+
+        private EmployeeRole(String displayValue) {
+            this.displayValue = displayValue;
+        }
+
+        public String getDisplayValue() {
+            return displayValue;
+        }
     }
 
     @Id
@@ -32,5 +42,37 @@ public class Employee {
     public void Test()
     {
         System.out.println("Test function");
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public Date getCreationTime() {
+        return creationTime;
+    }
+
+    public void setCreationTime(Date creationTime) {
+        this.creationTime = creationTime;
+    }
+
+    public EmployeeRole getRole() {
+        return role;
+    }
+
+    public void setRole(EmployeeRole role) {
+        this.role = role;
     }
 }

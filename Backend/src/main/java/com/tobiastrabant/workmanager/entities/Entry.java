@@ -8,15 +8,25 @@ public abstract class Entry {
 
     public enum EntryPriority
     {
-        LOW,
-        MEDIUM,
-        HIGH
+        LOW("Low"),
+        MEDIUM("Medium"),
+        HIGH("High");
+
+        private final String displayValue;
+
+        private EntryPriority(String displayValue) {
+            this.displayValue = displayValue;
+        }
+
+        public String getDisplayValue() {
+            return displayValue;
+        }
     }
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer id;
-    private String entryName;
+    private String name;
     private String description;
     private EntryPriority priority;
     //private User creator;
@@ -24,12 +34,12 @@ public abstract class Entry {
     private Date lastUpdated;
     //private User[] assignedEmployees;
 
-    public String getEntryName() {
-        return entryName;
+    public String getName() {
+        return name;
     }
 
-    public void setEntryName(String entryName) {
-        this.entryName = entryName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getDescription() {
