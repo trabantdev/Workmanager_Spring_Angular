@@ -27,9 +27,9 @@ public abstract class Entry {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer id;
-    @NotBlank
+    @NotBlank(message = "Name is required")
     private String name;
-    @NotBlank
+    @NotBlank(message = "Description is required")
     private String description;
     private EntryPriority priority;
     //private User creator;

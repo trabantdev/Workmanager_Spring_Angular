@@ -35,10 +35,12 @@ public class Employee {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer id;
-    @NotBlank
+    @NotBlank(message = "First name is required")
     private String firstName;
-    @NotBlank
+    @NotBlank(message = "Last name is required")
     private String lastName;
+    @NotBlank(message = "Email is required")
+    private String email;
     private LocalDateTime creationTime;
     private EmployeeRole role;
 
@@ -61,6 +63,14 @@ public class Employee {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public LocalDateTime getCreationTime() {
