@@ -44,7 +44,7 @@ public class EmployeeController {
     }
 
     @PostMapping("/form")
-    public String processEmployeeForm(@Valid @ModelAttribute Employee employee,
+    public String processEmployeeForm(@Valid @ModelAttribute("employee") Employee employee,
                                       BindingResult bindingResult,
                                       Model model) {
         model.addAttribute("employee", employee);
@@ -52,7 +52,8 @@ public class EmployeeController {
             return "employee-form";
         }
         else {
-            return "employee-confirmation";
+            employeeService.save(employee);
+            return "redirect:/employees/list";
         }
     }
 }

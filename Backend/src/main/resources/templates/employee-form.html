@@ -7,8 +7,9 @@
 <body>
     <h2>Employee Form</h2>
     <form action="#" th:action="@{/employees/form}" th:object="${employee}" method="post">
-        <input type="text" th:field="*{firstName}" placeholder="First Name" />test
-        <input type="text" th:field="*{lastName}" placeholder="Last Name" />test
+        <input type="text" th:field="*{firstName}" placeholder="First Name" />
+        <input type="text" th:field="*{lastName}" placeholder="Last Name" />
+        <input type="text" th:field="*{email}" placeholder="Email" />
         <p>Please select the employees role:</p>
         <select name="role">
             <option th:each="role : ${T(com.tobiastrabant.workmanager.entities.Employee.EmployeeRole).values()}"
