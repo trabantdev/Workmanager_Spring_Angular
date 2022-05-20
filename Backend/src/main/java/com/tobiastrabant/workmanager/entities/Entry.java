@@ -1,6 +1,7 @@
 package com.tobiastrabant.workmanager.entities;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.util.Date;
 
 @MappedSuperclass
@@ -26,7 +27,9 @@ public abstract class Entry {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer id;
+    @NotBlank
     private String name;
+    @NotBlank
     private String description;
     private EntryPriority priority;
     //private User creator;
