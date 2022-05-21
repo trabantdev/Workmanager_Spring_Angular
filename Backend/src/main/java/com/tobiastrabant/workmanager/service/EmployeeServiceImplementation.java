@@ -27,16 +27,13 @@ public class EmployeeServiceImplementation implements EmployeeService{
     public Employee findById(int id) {
         Optional<Employee> result = employeeRepository.findById(id);
 
-        Employee employee = null;
-
         if (result.isPresent()) {
-            employee = result.get();
+            Employee employee = result.get();
+            return employee;
         }
         else {
             throw new RuntimeException("Could not find employee with id - " + id);
         }
-
-        return employee;
     }
 
     @Override

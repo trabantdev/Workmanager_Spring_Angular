@@ -1,23 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Ticket Form</title>
 </head>
 <body>
-<h2>Ticket Form</h2>
-<form action="/process-ticket-form" method="GET">
-    <input type="text" name="name" placeholder="Ticket Name" />
-    <p><label for="description">Ticket Description:</label></p>
-    <textarea id="description" name="description" rows="4" cols="50">Enter Ticket Description Here...</textarea>
-    <br>
-    <p>Please select the Tickets priority:</p>
-    <select name="priority">
-        <option th:each="priority : ${T(com.tobiastrabant.workmanager.entities.Entry.EntryPriority).values()}"
-                th:value="${priority}" th:text="${priority.displayValue}"></option>
-    </select>
-    <br><br>
-    <input type="submit" />
-</form>
+    <h2>Ticket Form</h2>
+    <form action="#" th:action="@{/tickets/addOrUpdate}" th:object="${ticket}" method="post">
+        <input type="hidden" th:field="*{id}">
+        <input type="text" th:field="*{name}" placeholder="Ticket Name" />
+        <p><label for="description">Ticket Description:</label></p>
+        <textarea id="description" name="description" rows="4" cols="50">Enter Ticket Description Here...</textarea>
+        <br>
+        <p>Please select the Tickets priority:</p>
+        <select name="priority">
+            <option th:each="priority : ${T(com.tobiastrabant.workmanager.entities.Entry.EntryPriority).values()}"
+                    th:value="${priority}" th:text="${priority.displayValue}"></option>
+        </select>
+        <br><br>
+        <input type="submit" />
+    </form>
+    <hr>
+    <a th:href="@{/tickets/list}">Back to tickets list</a>
 </body>
 </html>

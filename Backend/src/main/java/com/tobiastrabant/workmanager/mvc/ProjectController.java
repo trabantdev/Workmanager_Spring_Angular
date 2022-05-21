@@ -1,16 +1,25 @@
 package com.tobiastrabant.workmanager.mvc;
 
 import com.tobiastrabant.workmanager.entities.Project;
+import com.tobiastrabant.workmanager.service.ProjectService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/projects")
 public class ProjectController {
+
+    private ProjectService projectService;
+
+    @Autowired
+    public ProjectController(ProjectService projectService) {
+        this.projectService = projectService;
+    }
 
     @GetMapping("/list")
     public String showProjectsList() {
@@ -18,15 +27,34 @@ public class ProjectController {
     }
 
     @GetMapping("/add")
-    public String showProjectForm(Model model) {
+    public String showAddProjectForm(Model model) {
         model.addAttribute("project", new Project());
         return "project-form";
     }
 
+    @GetMapping("/update")
+    public String showUpdateProjectForm(@RequestParam("projectID") int id, Model model) {
+        model.addAttribute("project", projectService.findById(id));
+        return "project-form";
+    }
+
     @PostMapping("/addOrUpdate")
-    public String processProjectForm(@ModelAttribute Project project,
-                                     Model model) {
+    public String processAddEmployeeForm(@Valid @ModelAttribute("project") Project project,
+                                         BindingResult bindingResult,
+                                         Model model) {
         model.addAttribute("project", project);
-        return "project-confirmation";
+        if (bindingResult.hasErrors()) {
+            System.out.println(bindingResult.getAllErrors());
+            return "project-form";
+        } else {
+            projectService.save(project);
+            return "redirect:/projects/list";
+        }
+    }
+
+    @GetMapping("/delete")
+    public String deleteProject(@RequestParam("projectID") int id) {
+        projectService.deleteById(id);
+        return "redirect:/projects/list";
     }
 }

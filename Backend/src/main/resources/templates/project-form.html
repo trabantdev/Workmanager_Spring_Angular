@@ -6,7 +6,7 @@
 </head>
 <body>
     <h2>Project Form</h2>
-    <form th:action="@{/form}" method="post" th:object="${project}">
+    <form th:action="@{/projects/addOrUpdate}" method="post" th:object="${project}">
         <input type="text" name="name" placeholder="Project Name" />
         <p><label for="description">Project Description:</label></p>
         <textarea id="description" name="description" rows="4" cols="50">Enter Project Description Here...</textarea>

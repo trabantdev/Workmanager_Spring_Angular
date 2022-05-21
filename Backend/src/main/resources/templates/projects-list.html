@@ -27,13 +27,13 @@
         <td th:text="${project.priority}"></td>
         <td th:text="${project.deadline}"></td>
         <td>
-            <a th:href="@{/employees/update(employeeID=${employee.id})}">
+            <a th:href="@{/projects/update(projectID=${project.id})}">
                 Update
             </a>
         </td>
         <td>
-            <a th:href="@{/employees/delete(employeeID=${employee.id})}"
-               onclick="if(!(confirm('Do you really want to delete this employee?'))) return false">
+            <a th:href="@{/projects/delete(projectID=${project.id})}"
+               onclick="if(!(confirm('Do you really want to delete this project?'))) return false">
                 Delete
             </a>
         </td>

@@ -1,10 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Tickets List</title>
 </head>
 <body>
     <h2>Tickets List</h2>
+    <hr>
+    <a th:href="@{/tickets/add}">
+        Add Ticket
+    </a>
+    <table border="1">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Priority</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="ticket : ${tickets}">
+            <td th:text="${ticket.name}"></td>
+            <td th:text="${ticket.description}"></td>
+            <td th:text="${ticket.priority.displayValue}"></td>
+            <td>
+                <a th:href="@{/tickets/update(ticketID=${ticket.id})}">
+                    Update
+                </a>
+            </td>
+            <td>
+                <a th:href="@{/tickets/delete(ticketID=${ticket.id})}"
+                   onclick="if(!(confirm('Do you really want to delete this ticket?'))) return false">
+                    Delete
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
 </body>
 </html>

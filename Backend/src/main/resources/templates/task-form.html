@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Task Form</title>
 </head>
 <body>
 <h2>Task Form</h2>
-<form action="/process-task-form" method="GET">
+<form th:action="@{/tasks/addOrUpdate}" method="post" th:object="${task}">
     <input type="text" name="name" placeholder="Task Name" />
     <p><label for="description">Task Description:</label></p>
     <textarea id="description" name="description" rows="4" cols="50">Enter Task Description Here...</textarea>
