@@ -37,14 +37,34 @@ public class EmployeeController {
         return "employees-list";
     }
 
-    @GetMapping("/form")
-    public String showEmployeeForm(Model model){
+    @GetMapping("/add")
+    public String showAddEmployeeForm(Model model){
         model.addAttribute("employee", new Employee());
         return "employee-form";
     }
 
-    @PostMapping("/form")
-    public String processEmployeeForm(@Valid @ModelAttribute("employee") Employee employee,
+    @PostMapping("/add")
+    public String processAddEmployeeForm(@Valid @ModelAttribute("employee") Employee employee,
+                                      BindingResult bindingResult,
+                                      Model model) {
+        model.addAttribute("employee", employee);
+        if(bindingResult.hasErrors()) {
+            return "employee-form";
+        }
+        else {
+            employeeService.save(employee);
+            return "redirect:/employees/list";
+        }
+    }
+
+    @GetMapping("/update")
+    public String showUpdateEmployeeForm(Model model){
+        model.addAttribute("employee", new Employee());
+        return "employee-form";
+    }
+
+    @PostMapping("/update")
+    public String processUpdateEmployeeForm(@Valid @ModelAttribute("employee") Employee employee,
                                       BindingResult bindingResult,
                                       Model model) {
         model.addAttribute("employee", employee);
