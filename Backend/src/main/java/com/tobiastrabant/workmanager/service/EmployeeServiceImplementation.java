@@ -53,4 +53,9 @@ public class EmployeeServiceImplementation implements EmployeeService{
     public List<Employee> findAllByOrderByLastNameAsc() {
         return employeeRepository.findAllByOrderByLastNameAsc();
     }
+
+    @Override
+    public List<Employee> findAllByOrderByLastNameDesc() {
+        return employeeRepository.findAllByOrderByLastNameDesc();
+    }
 }

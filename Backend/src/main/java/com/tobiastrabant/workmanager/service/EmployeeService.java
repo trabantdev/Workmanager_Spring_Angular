@@ -15,4 +15,6 @@ public interface EmployeeService {
     void deleteById(int id);
 
     List<Employee> findAllByOrderByLastNameAsc();
+
+    List<Employee> findAllByOrderByLastNameDesc();
 }
