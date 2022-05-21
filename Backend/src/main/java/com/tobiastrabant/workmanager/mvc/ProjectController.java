@@ -17,13 +17,13 @@ public class ProjectController {
         return "projects-list";
     }
 
-    @GetMapping("/form")
+    @GetMapping("/add")
     public String showProjectForm(Model model) {
         model.addAttribute("project", new Project());
         return "project-form";
     }
 
-    @PostMapping("/form")
+    @PostMapping("/addOrUpdate")
     public String processProjectForm(@ModelAttribute Project project,
                                      Model model) {
         model.addAttribute("project", project);

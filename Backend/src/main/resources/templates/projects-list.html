@@ -1,10 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Projects List</title>
 </head>
 <body>
-  <h2>Projects List</h2>
+<h2>Projects List</h2>
+<hr>
+<a th:href="@{/projects/add}">
+    Add Project
+</a>
+<table border="1">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Priority</th>
+        <th>Deadline</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="project : ${projects}">
+        <td th:text="${project.name}"></td>
+        <td th:text="${project.description}"></td>
+        <td th:text="${project.priority}"></td>
+        <td th:text="${project.deadline}"></td>
+        <td>
+            <a th:href="@{/employees/update(employeeID=${employee.id})}">
+                Update
+            </a>
+        </td>
+        <td>
+            <a th:href="@{/employees/delete(employeeID=${employee.id})}"
+               onclick="if(!(confirm('Do you really want to delete this employee?'))) return false">
+                Delete
+            </a>
+        </td>
+    </tr>
+    </tbody>
+</table>
 </body>
 </html>
