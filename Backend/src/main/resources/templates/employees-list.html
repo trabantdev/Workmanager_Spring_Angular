@@ -7,7 +7,7 @@
 <body>
     <h2>Employee List</h2>
     <hr>
-    <a th:href="@{/employees/form}">
+    <a th:href="@{/employees/add}">
         Add Employee
     </a>
     <table border="1">
@@ -27,6 +27,12 @@
                 <td>
                     <a th:href="@{/employees/update(employeeID=${employee.id})}">
                         Update
+                    </a>
+                </td>
+                <td>
+                    <a th:href="@{/employees/delete(employeeID=${employee.id})}"
+                        onclick="if(!(confirm('Do you really want to delete this employee?'))) return false">
+                        Delete
                     </a>
                 </td>
             </tr>

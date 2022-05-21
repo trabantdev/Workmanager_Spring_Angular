@@ -59,4 +59,10 @@ public class EmployeeController {
         model.addAttribute("employee", employeeService.findById(id));
         return "employee-form";
     }
+
+    @GetMapping("/delete")
+    public String deleteEmployee(@RequestParam("employeeID") int id) {
+        employeeService.deleteById(id);
+        return "redirect:/employees/list";
+    }
 }
