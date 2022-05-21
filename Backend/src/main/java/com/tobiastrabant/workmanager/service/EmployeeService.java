@@ -33,4 +33,6 @@ public interface EmployeeService {
     List<Employee> findByFirstNameOrderByLastNameAsc(String firstname);
 
     List<Employee> findByFirstNameOrderByLastNameDesc(String firstname);
+
+    List<Employee> findByEmailAddress(String email);
 }

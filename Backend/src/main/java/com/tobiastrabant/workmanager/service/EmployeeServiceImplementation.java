@@ -98,4 +98,9 @@ public class EmployeeServiceImplementation implements EmployeeService{
     public List<Employee> findByFirstNameOrderByLastNameDesc(String firstname) {
         return employeeRepository.findByFirstNameOrderByLastNameDesc(firstname);
     }
+
+    @Override
+    public List<Employee> findByEmailAddress(String email) {
+        return employeeRepository.findByEmailAddress(email);
+    }
 }
