@@ -10,13 +10,13 @@ public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
     List<Employee> findAllByOrderByLastNameAsc();
     List<Employee> findAllByOrderByLastNameDesc();
 
-    List<Employee> findByLastnameOrderByFirstNameAsc(String lastname);
+    List<Employee> findByLastNameOrderByFirstNameAsc(String lastname);
 
-    List<Employee> findByLastnameOrderByFirstNameDesc(String lastname);
+    List<Employee> findByLastNameOrderByFirstNameDesc(String lastname);
 
-    List<Employee> findByLastnameOrderByLastNameAsc(String lastname);
+    List<Employee> findByLastNameOrderByLastNameAsc(String lastname);
 
-    List<Employee> findByLastnameOrderByLastNameDesc(String lastname);
+    List<Employee> findByLastNameOrderByLastNameDesc(String lastname);
 
     List<Employee> findByFirstNameOrderByFirstNameAsc(String firstname);
 
@@ -26,5 +26,5 @@ public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
 
     List<Employee> findByFirstNameOrderByLastNameDesc(String firstname);
 
-    List<Employee> findByEmailAddress(String email);
+    List<Employee> findByEmail(String email);
 }

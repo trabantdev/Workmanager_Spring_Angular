@@ -18,21 +18,21 @@ public interface EmployeeService {
 
     List<Employee> findAllByOrderByLastNameDesc();
 
-    List<Employee> findByLastnameOrderByFirstNameAsc(String lastname);
+    List<Employee> findByLastNameOrderByFirstNameAsc(String lastName);
 
-    List<Employee> findByLastnameOrderByFirstNameDesc(String lastname);
+    List<Employee> findByLastNameOrderByFirstNameDesc(String lastName);
 
-    List<Employee> findByLastnameOrderByLastNameAsc(String lastname);
+    List<Employee> findByLastNameOrderByLastNameAsc(String lastName);
 
-    List<Employee> findByLastnameOrderByLastNameDesc(String lastname);
+    List<Employee> findByLastNameOrderByLastNameDesc(String lastName);
 
-    List<Employee> findByFirstNameOrderByFirstNameAsc(String firstname);
+    List<Employee> findByFirstNameOrderByFirstNameAsc(String lastName);
 
-    List<Employee> findByFirstNameOrderByFirstNameDesc(String firstname);
+    List<Employee> findByFirstNameOrderByFirstNameDesc(String firstName);
 
-    List<Employee> findByFirstNameOrderByLastNameAsc(String firstname);
+    List<Employee> findByFirstNameOrderByLastNameAsc(String firstName);
 
-    List<Employee> findByFirstNameOrderByLastNameDesc(String firstname);
+    List<Employee> findByFirstNameOrderByLastNameDesc(String firstName);
 
     List<Employee> findByEmailAddress(String email);
 }

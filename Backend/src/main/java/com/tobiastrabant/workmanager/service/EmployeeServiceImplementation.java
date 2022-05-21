@@ -60,47 +60,46 @@ public class EmployeeServiceImplementation implements EmployeeService{
     }
 
     @Override
-    public List<Employee> findByLastnameOrderByFirstNameAsc(String lastname) {
-        return employeeRepository.findByLastnameOrderByFirstNameAsc(lastname);
+    public List<Employee> findByLastNameOrderByFirstNameAsc(String lastName) {
+        return employeeRepository.findByLastNameOrderByFirstNameAsc(lastName);
     }
 
     @Override
-    public List<Employee> findByLastnameOrderByFirstNameDesc(String lastname) {
-        return employeeRepository.findByLastnameOrderByFirstNameDesc(lastname);
+    public List<Employee> findByLastNameOrderByFirstNameDesc(String lastName) {
+        return employeeRepository.findByLastNameOrderByFirstNameDesc(lastName);
+    }
+    @Override
+    public List<Employee> findByLastNameOrderByLastNameAsc(String lastName) {
+        return employeeRepository.findByLastNameOrderByLastNameAsc(lastName);
     }
 
     @Override
-    public List<Employee> findByLastnameOrderByLastNameAsc(String lastname) {
-        return employeeRepository.findByLastnameOrderByLastNameAsc(lastname);
+    public List<Employee> findByLastNameOrderByLastNameDesc(String lastName) {
+        return employeeRepository.findByLastNameOrderByLastNameDesc(lastName);
     }
 
     @Override
-    public List<Employee> findByLastnameOrderByLastNameDesc(String lastname) {
-        return employeeRepository.findByLastnameOrderByLastNameDesc(lastname);
+    public List<Employee> findByFirstNameOrderByFirstNameAsc(String firstName) {
+        return employeeRepository.findByFirstNameOrderByFirstNameAsc(firstName);
     }
 
     @Override
-    public List<Employee> findByFirstNameOrderByFirstNameAsc(String firstname) {
-        return employeeRepository.findByFirstNameOrderByFirstNameAsc(firstname);
+    public List<Employee> findByFirstNameOrderByFirstNameDesc(String firstName) {
+        return employeeRepository.findByFirstNameOrderByFirstNameDesc(firstName);
     }
 
     @Override
-    public List<Employee> findByFirstNameOrderByFirstNameDesc(String firstname) {
-        return employeeRepository.findByFirstNameOrderByFirstNameDesc(firstname);
+    public List<Employee> findByFirstNameOrderByLastNameAsc(String firstName) {
+        return employeeRepository.findByFirstNameOrderByLastNameAsc(firstName);
     }
 
     @Override
-    public List<Employee> findByFirstNameOrderByLastNameAsc(String firstname) {
-        return employeeRepository.findByFirstNameOrderByLastNameAsc(firstname);
-    }
-
-    @Override
-    public List<Employee> findByFirstNameOrderByLastNameDesc(String firstname) {
-        return employeeRepository.findByFirstNameOrderByLastNameDesc(firstname);
+    public List<Employee> findByFirstNameOrderByLastNameDesc(String firstName) {
+        return employeeRepository.findByFirstNameOrderByLastNameDesc(firstName);
     }
 
     @Override
     public List<Employee> findByEmailAddress(String email) {
-        return employeeRepository.findByEmailAddress(email);
+        return employeeRepository.findByEmail(email);
     }
 }
