@@ -6,10 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -21,11 +18,12 @@ public class EmployeeController {
     private EmployeeService employeeService;
 
     @Autowired
-    public EmployeeController(EmployeeService employeeService){
+    public EmployeeController(EmployeeService employeeService) {
         this.employeeService = employeeService;
     }
+
     @GetMapping("/list")
-    public String showEmployeesList(Model model){
+    public String showEmployeesList(Model model) {
         //TODO add employees from database to the model with identifier "employees"
         List<Employee> employees = employeeService.findAllByOrderByLastNameDesc();
 /*        Employee tobias = new Employee();
@@ -33,47 +31,32 @@ public class EmployeeController {
         tobias.setLastName("Trabant");
         tobias.setEmail("trabant@web.de");
         employees.add(tobias);*/
-        model.addAttribute("employees",employees);
+        model.addAttribute("employees", employees);
         return "employees-list";
     }
 
     @GetMapping("/add")
-    public String showAddEmployeeForm(Model model){
+    public String showAddEmployeeForm(Model model) {
         model.addAttribute("employee", new Employee());
         return "employee-form";
     }
 
     @PostMapping("/add")
     public String processAddEmployeeForm(@Valid @ModelAttribute("employee") Employee employee,
-                                      BindingResult bindingResult,
-                                      Model model) {
+                                         BindingResult bindingResult,
+                                         Model model) {
         model.addAttribute("employee", employee);
-        if(bindingResult.hasErrors()) {
+        if (bindingResult.hasErrors()) {
             return "employee-form";
-        }
-        else {
+        } else {
             employeeService.save(employee);
             return "redirect:/employees/list";
         }
     }
 
     @GetMapping("/update")
-    public String showUpdateEmployeeForm(Model model){
-        model.addAttribute("employee", new Employee());
+    public String showUpdateEmployeeForm(@RequestParam("employeeID") int id, Model model) {
+        model.addAttribute("employee", employeeService.findById(id));
         return "employee-form";
-    }
-
-    @PostMapping("/update")
-    public String processUpdateEmployeeForm(@Valid @ModelAttribute("employee") Employee employee,
-                                      BindingResult bindingResult,
-                                      Model model) {
-        model.addAttribute("employee", employee);
-        if(bindingResult.hasErrors()) {
-            return "employee-form";
-        }
-        else {
-            employeeService.save(employee);
-            return "redirect:/employees/list";
-        }
     }
 }
