@@ -58,4 +58,44 @@ public class EmployeeServiceImplementation implements EmployeeService{
     public List<Employee> findAllByOrderByLastNameDesc() {
         return employeeRepository.findAllByOrderByLastNameDesc();
     }
+
+    @Override
+    public List<Employee> findByLastnameOrderByFirstNameAsc(String lastname) {
+        return employeeRepository.findByLastnameOrderByFirstNameAsc(lastname);
+    }
+
+    @Override
+    public List<Employee> findByLastnameOrderByFirstNameDesc(String lastname) {
+        return employeeRepository.findByLastnameOrderByFirstNameDesc(lastname);
+    }
+
+    @Override
+    public List<Employee> findByLastnameOrderByLastNameAsc(String lastname) {
+        return employeeRepository.findByLastnameOrderByLastNameAsc(lastname);
+    }
+
+    @Override
+    public List<Employee> findByLastnameOrderByLastNameDesc(String lastname) {
+        return employeeRepository.findByLastnameOrderByLastNameDesc(lastname);
+    }
+
+    @Override
+    public List<Employee> findByFirstNameOrderByFirstNameAsc(String firstname) {
+        return employeeRepository.findByFirstNameOrderByFirstNameAsc(firstname);
+    }
+
+    @Override
+    public List<Employee> findByFirstNameOrderByFirstNameDesc(String firstname) {
+        return employeeRepository.findByFirstNameOrderByFirstNameDesc(firstname);
+    }
+
+    @Override
+    public List<Employee> findByFirstNameOrderByLastNameAsc(String firstname) {
+        return employeeRepository.findByFirstNameOrderByLastNameAsc(firstname);
+    }
+
+    @Override
+    public List<Employee> findByFirstNameOrderByLastNameDesc(String firstname) {
+        return employeeRepository.findByFirstNameOrderByLastNameDesc(firstname);
+    }
 }
