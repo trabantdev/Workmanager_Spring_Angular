@@ -41,7 +41,7 @@ public class EmployeeController {
         return "employee-form";
     }
 
-    @PostMapping("/add")
+    @PostMapping("/addOrUpdate")
     public String processAddEmployeeForm(@Valid @ModelAttribute("employee") Employee employee,
                                          BindingResult bindingResult,
                                          Model model) {
