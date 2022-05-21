@@ -27,7 +27,7 @@ public class EmployeeController {
     @GetMapping("/list")
     public String showEmployeesList(Model model){
         //TODO add employees from database to the model with identifier "employees"
-        List<Employee> employees = employeeService.findAll();
+        List<Employee> employees = employeeService.findAllByOrderByLastNameAsc();
 /*        Employee tobias = new Employee();
         tobias.setFirstName("Tobias");
         tobias.setLastName("Trabant");
