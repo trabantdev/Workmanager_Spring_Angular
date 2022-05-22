@@ -1,4 +1,4 @@
-package com.tobiastrabant.workmanager;
+package com.tobiastrabant.workmanager.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
